@@ -43,3 +43,16 @@ gem 'haml'
 group :development , :test do
 	gem 'debugger'
 end
+
+#making your gemfile safe for Heroku
+ruby '1.9.3'	
+group :development , :test do
+	#make sure SQLite3 gen ONLY occurs inside development and test groups
+	gem 'sqlite3' #use sqlite only in development and testing
+end
+
+group :production do
+	#make sure the following gems are in your production group
+	gem 'pg'		#use postgreSQL in production
+	gem 'rails_12factor'	#Heroku-specific production settings
+end
